@@ -1,8 +1,5 @@
 from django.db import models
-from codewithbp.apps.article.models import Article
-from django.contrib.auth.models import CustomUser
-
-from article import models.Article
+from codewithbp.apps.customuser.models import CustomUser
 
 # Create your models here.
 
@@ -14,6 +11,3 @@ class Community(models.Model):
 
     def get_num_users(self):
         return CustomUser.objects.filter(community=self.id).count()
-
-    def load_articles(self):
-        self
