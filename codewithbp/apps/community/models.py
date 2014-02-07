@@ -14,4 +14,4 @@ class Community(models.Model):
         return CustomUser.objects.filter(community=self.id).count()
 
     def load_articles(self):
-        articles = []
+
