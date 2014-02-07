@@ -10,7 +10,9 @@ def login_check(user):
         return True
     return False
 
+
 class LoginView(FormView):
+
     template_name = 'login/login.html'
     form_class = AuthenticationForm
     success_url = '/'
@@ -39,3 +41,19 @@ class LoginView(FormView):
     def form_invalid(self, form):
         context = self.get_context_data(form=form)
         return self.render_to_response(context)
+
+
+def get_users(request):
+
+    context = {'users': []}
+    for user in CustomUser.objects.all():
+        context['users'].append(user)
+    return render(request, "template.html", context)
+
+
+def get_articles_from_user(request):
+
+    context = {'articles': []}
+    for article in Article.objects.filter(customuser__id = Article.author):
+        context['articles'].append(article)
+    return render(request, "template.html", context)

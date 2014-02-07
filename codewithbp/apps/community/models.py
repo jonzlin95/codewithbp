@@ -3,14 +3,13 @@ from codewithbp.apps.customuser.models import CustomUser
 
 
 # Create your models here.
+ARTICLES_PER_PAGE = 25
 
 
 class Community(models.Model):
+
     name = models.CharField(max_length=32)
     users = models.ManyToManyField(CustomUser)
 
     def get_num_users(self):
         return CustomUser.objects.filter(community=self.id).count()
-
-    def load_articles(self):
-        articles = []

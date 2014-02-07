@@ -7,6 +7,7 @@ from codewithbp.apps.customuser.models import CustomUser
 
 
 class Article(models.Model):
+
     author = models.ForeignKey(CustomUser)
     community = models.ForeignKey(Community)
     title = models.CharField(max_length=128)
