@@ -9,4 +9,3 @@ class Article(models.Model):
     community = models.ForeignKey(Community)
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
-
